@@ -1,0 +1,87 @@
+models:
+    - name: messages_status_joined
+      description: Joined messages and status tables.
+      columns:
+        - name: uuid
+          description: The primary key for this table
+          data_tests:
+            - unique
+            - not_null
+        - name: content
+          description: The actual text content of the message
+        - name: message_type
+          description: the type of message that is being spoken about - can be interactive, text, button etc.
+          data_tests:
+            - not_null
+        - name: direction
+          description: Indicates whether the message was incoming or outgoing.
+          data_tests:
+            - not_null
+            - accepted_values:
+                values:
+                  - "inbound"
+                  - "outbound"
+        - name: message_sent_at
+          description: Timestamp when the message was sent.
+          data_tests:
+            - not_null
+        - name: sent_status_id
+          description: Sent status id of the message status.
+          data_tests:
+            - unique
+        - name: sent_uuid
+          description: Sent uuid of the message status. The foregin key for this messages table.
+          data_tests:
+            - unique
+        - name: sent_status
+          description: Sent status of the message status.
+        - name: sent_status_updated_at
+          description: Timestamp when the sent status was last updated in the database.
+        - name: delivered_status_id
+          description: Delivered status id of the message status.
+          data_tests:
+            - unique
+        - name: delivered_uuid
+          description: Delivered uuid of the message status. The foregin key for this messages table.
+          data_tests:
+            - unique
+        - name: delivered_status
+          description: Delivered status of the message status.
+        - name: delivered_status_updated_at
+          description: Timestamp when the delivered status was last updated in the database.
+        - name: read_status_id
+          description: Read status id of the message status.
+          data_tests:
+            - unique
+        - name: read_uuid
+          description: Read uuid of the message status. The foregin key for this messages table.
+          data_tests:
+            - unique
+        - name: read_status
+          description: Read status of the message status.
+        - name: read_status_updated_at
+          description: Timestamp when the read status was last updated in the database.
+        - name: failed_status_id
+          description: Failed status id of the message status.
+          data_tests:
+            - unique
+        - name: failed_uuid
+          description: Failed uuid of the message status. The foregin key for this messages table.
+          data_tests:
+            - unique
+        - name: failed_status
+          description: Failed status of the message status.
+        - name: failed_status_updated_at
+          description: Timestamp when the failed status was last updated in the database.
+        - name: deleted_status_id
+          description: Deleted status id of the message status.
+          data_tests:
+            - unique
+        - name: deleted_uuid
+          description: Deleted uuid of the message status. The foregin key for this messages table.
+          data_tests:
+            - unique
+        - name: deleted_status
+          description: Deleted status of the message status.
+        - name: deleted_status_updated_at
+          description: Timestamp when the deleted status was last updated in the database.

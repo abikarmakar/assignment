@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: chatbot_data
+    schema: assignment_staging
+    tables:
+        - name: raw_messages
+          identifier: messages
+          description: contains messages received and/or sent by users
+        - name: raw_statuses
+          identifier: statuses
+          description: contains statuses of messages

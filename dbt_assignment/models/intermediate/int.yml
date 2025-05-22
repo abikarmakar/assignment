@@ -1,0 +1,62 @@
+models:
+  - name: messages_intermediate
+    description: Messages table for chatBOT.
+    columns:
+      - name: id
+        description: The primary key for this table
+        data_tests:
+          - unique
+          - not_null
+      - name: uuid
+        description: The primary key for this table
+        data_tests:
+          - unique
+          - not_null
+      - name: content
+        description: The actual text content of the message
+      - name: message_type
+        description: the type of message that is being spoken about - can be interactive, text, button etc.
+        data_tests:
+          - not_null
+      - name: direction
+        description: Indicates whether the message was incoming or outgoing.
+        data_tests:
+          - not_null
+          - accepted_values:
+              values:
+                - "inbound"
+                - "outbound"
+      - name: last_status
+        description: The last known status of the message (e.g., sent, delivered, read).
+      - name: updated_at
+        description: Timestamp when the message was last updated in the database.
+        data_tests:
+          - not_null
+  
+  - name: status_intermediate
+    description: Statuses table for chatBOT.
+    columns:
+      - name: id
+        description: The primary key for this table
+        data_tests:
+          - unique
+          - not_null
+      - name: uuid
+        description: The primary key for this table
+        data_tests:
+          - unique
+          - not_null
+      - name: message_uuid
+        description: A unique identifier linking the status to a specific message. Foreign key to messages table.
+        data_tests:
+          - not_null
+      - name: number_id
+        description: An identifier which may relate to a specific phone number or user account, particularly in systems where messages are tied to specific numbers.
+        data_tests:
+          - not_null
+      - name: message_status
+        description: The last known status of the message (e.g., sent, delivered, read).
+      - name: updated_at
+        description: Timestamp when the message was last updated in the database.
+        data_tests:
+          - not_null
